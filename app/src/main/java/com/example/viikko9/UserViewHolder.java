@@ -7,7 +7,8 @@ import android.widget.TextView;
 import androidx.recyclerview.widget.RecyclerView;
 
 public class UserViewHolder extends RecyclerView.ViewHolder {
-    TextView name, email, subject, degrees;
+    TextView name, email, subject;
+    RecyclerView  degrees;
     ImageView picture;
 
     public UserViewHolder(View itemView){
@@ -16,7 +17,7 @@ public class UserViewHolder extends RecyclerView.ViewHolder {
         name = itemView.findViewById(R.id.tvUserName);
         email = itemView.findViewById(R.id.tvEmail);
         subject = itemView.findViewById(R.id.tvSubject);
-        degrees = itemView.findViewById(R.id.tvDegrees);
+        degrees = itemView.findViewById(R.id.rvDegrees);
 
     }
 }

@@ -4,14 +4,16 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
 
+
 import androidx.annotation.NonNull;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 public class UserListAdapter extends RecyclerView.Adapter<UserViewHolder> {
     private Context context;
+
     private ArrayList<User> users = new ArrayList<>();
 
     public UserListAdapter(Context context, ArrayList<User> users){
@@ -30,8 +32,10 @@ public class UserListAdapter extends RecyclerView.Adapter<UserViewHolder> {
         holder.name.setText(users.get(position).getFirstName()+" " +users.get(position).getLastName());
         holder.email.setText(users.get(position).getEmail());
         holder.subject.setText(users.get(position).getDegreeProgram());
-        holder.degrees.setText(degreesToString(position));
+       // holder.degrees.setText(degreesToString(position));
         holder.picture.setImageResource(users.get(position).getPicture());
+        degreesToRecycleView(holder.degrees, users, context, position);
+
     }
 
     @Override
@@ -47,5 +51,10 @@ public class UserListAdapter extends RecyclerView.Adapter<UserViewHolder> {
         }
         return String.valueOf(result);
     }
-    
+
+    public void degreesToRecycleView(RecyclerView degrees,ArrayList<User> users, Context context, int position){
+        degrees.setLayoutManager(new LinearLayoutManager((degrees.getContext())));
+        degrees.setAdapter(new DegreeListAdapter(degrees.getContext(), users.get(position).getDegrees()));
+    }
+
 }

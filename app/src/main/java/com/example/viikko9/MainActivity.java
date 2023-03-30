@@ -18,7 +18,12 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         context = getApplicationContext();
-        UserStorage.getInstance().loadUsers(context);
+        try {
+            UserStorage.getInstance().loadUsers(context);
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+
         UserStorage userStorage = UserStorage.getInstance();
 
     }

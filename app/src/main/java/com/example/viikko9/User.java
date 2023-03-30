@@ -45,4 +45,8 @@ public class User extends UserStorage implements Serializable {
     public ArrayList<String> getDegrees() {
         return degrees;
     }
+
+    public String getDegree(int position){
+        return degrees.get(position).toString();
+    }
 }
