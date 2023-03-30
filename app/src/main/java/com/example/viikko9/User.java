@@ -1,20 +1,26 @@
 package com.example.viikko9;
 
-public class User extends UserStorage {
-    private String firstName;
-    private String lastName;
-    private String email;
-    private String degreeProgram;
+import java.io.Serializable;
+import java.util.ArrayList;
 
-    private int picture;
+public class User extends UserStorage implements Serializable {
+    private final String firstName;
+    private final String lastName;
+    private final String email;
+    private final String degreeProgram;
+    protected static final long serialVersionUID = 3453475L;
+    private final ArrayList<String> degrees;
 
-    public User (String firstName, String lastName, String email, String degreeProgram, int picture){
+    private final int picture;
+
+    public User (String firstName, String lastName, String email, String degreeProgram, int picture, ArrayList<String> degrees){
         super();
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;
         this.degreeProgram = degreeProgram;
         this.picture = picture;
+        this.degrees = degrees;
     }
     public String getFirstName() {
         return firstName;
@@ -36,4 +42,11 @@ public class User extends UserStorage {
         return degreeProgram;
     }
 
+    public ArrayList<String> getDegrees() {
+        return degrees;
+    }
+
+    public String getDegree(int position){
+        return degrees.get(position).toString();
+    }
 }
